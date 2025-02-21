@@ -1,0 +1,93 @@
+/*Fonction pour éviter de répéter de truc pas retenable exemple avec les couleurs*/
+:root {
+  --Vert_foncé: #0e402e;
+  --Vert_moyen: #688c6a;
+  --vert_clair: #a8bfaa;
+  --blanc: #f2f2f2;
+  --noir: #0d0d0d;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: "Inclusive Sans", serif;
+}
+
+header {
+  background-color: var(--Vert_foncé);
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+header img#logo_img {
+  height: 50px;
+  width: auto;
+}
+
+h1 {
+  margin: 0;
+  color: var(--blanc);
+}
+
+#profile {
+  display: flex;
+  flex-direction: row;
+}
+
+#profile p {
+  color: var(--blanc);
+}
+
+div#principal {
+  padding: 10px;
+  background-color: var(--Vert_moyen);
+  height: auto;
+}
+
+div#principal p {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+  padding-top: 20px;
+  color: var(--blanc);
+  text-decoration: underline;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+.card {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+.card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.card img {
+  width: 100%;
+  height: 200px;
+}
+.card-content {
+  padding: 20px;
+}
+.card h3 {
+  margin-top: 0;
+}
