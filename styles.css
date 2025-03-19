@@ -1,10 +1,11 @@
 /*Fonction pour éviter de répéter de truc pas retenable exemple avec les couleurs*/
 :root {
-  --Vert_foncé: #0e402e;
-  --Vert_moyen: #688c6a;
-  --vert_clair: #a8bfaa;
+  --vert-clair: #6d9773;
+  --Vert_foncé: #0c3b2e;
+  --jaune: #ffba00;
+  --marron: #b46617;
   --blanc: #f2f2f2;
-  --noir: #0d0d0d;
+  --noir: #0f0f0f;
 }
 
 body {
