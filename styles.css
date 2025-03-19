@@ -38,14 +38,32 @@ header {
   align-items: center; /* Centre le logo et le texte verticalement */
 }
 
+/* Styles par défaut pour les écrans larges */
 .logo {
-  width: 200px; /* Réduit la taille du logo */
-  margin-right: 1rem; /* Espace entre le logo et le texte */
+  width: 200px; /* Taille par défaut pour les grands écrans */
+  margin-right: 1rem;
 }
 
 .store {
   width: 200px;
   margin-right: 1rem;
+}
+
+/* Pour les tablettes (écrans moyens) */
+@media (max-width: 768px) {
+  .logo,
+  .store {
+    width: 150px; /* Réduit la largeur des éléments */
+  }
+}
+
+/* Pour les téléphones (petits écrans) */
+@media (max-width: 480px) {
+  .logo,
+  .store {
+    width: 100px; /* Taille encore plus petite pour les écrans étroits */
+    margin-right: 0.5rem; /* Réduit l'espacement pour maximiser l'espace disponible */
+  }
 }
 
 /* Fin header */
