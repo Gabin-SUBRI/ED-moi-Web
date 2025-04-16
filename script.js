@@ -1,17 +1,20 @@
-const carousel = document.querySelector(".carousel-images");
-const images = document.querySelectorAll(".carousel-images img");
+// script.js
+document.addEventListener("DOMContentLoaded", function () {
+  const days = document.querySelectorAll(".day");
 
-let index = 0;
+  let today = new Date().getDay(); // Retourne 0 (Dimanche) à 6 (Samedi)
 
-function startCarousel() {
-  index = (index + 1) % images.length; // Boucle vers la première image après la dernière
-  const width = images[0].clientWidth;
-  carousel.style.transform = `translateX(${-index * width}px)`;
-}
+  //let today = 5; // faire croire au programme que l'on est sur un autre jour
 
-setInterval(startCarousel, 3000); // Change d'image toutes les 3 secondes
+  if (today === 0) today = 7; // Convertir Dimanche (0) en 7 pour correspondre à tes données
 
-// Ajuste le défilement si la fenêtre est redimensionnée
-window.addEventListener("resize", () => {
-  carousel.style.transform = `translateX(${-index * images[0].clientWidth}px)`;
+  days.forEach((day, index) => {
+    const dayNumber = index + 1; // Associer 1 = Lundi, ..., 7 = Dimanche
+
+    if (dayNumber < today) {
+      day.querySelector(".circle").classList.add("filled"); // Jour passé
+    } else if (dayNumber === today) {
+      day.querySelector(".circle").classList.add("current"); // Jour actuel
+    }
+  });
 });

@@ -1,167 +1,469 @@
-/*Fonction pour éviter de répéter de truc pas retenable exemple avec les couleurs*/
 :root {
   --vert-clair: #6d9773;
   --Vert-foncé: #0c3b2e;
   --jaune: #ffba00;
   --marron: #b46617;
   --blanc: #f2f2f2;
+  --gris: #1e1e1e;
   --noir: #0f0f0f;
 }
 
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
-  font-family: "Inclusive Sans", serif;
+  background-color: var(--Vert-foncé);
 }
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Debut header */
 
 header {
-  background-color: var(--Vert-foncé);
+  display: grid;
+  background-color: var(--gris);
+  grid-template-columns: 1fr 2fr 1fr; /* Colonnes avec des largeurs : 25%, 50%, 25% */
+  padding: 1rem;
+}
+
+header div#titre {
   color: var(--blanc);
-  padding: 20px;
   display: flex;
-  justify-content: space-between; /* Aligne les éléments horizontalement */
-  align-items: center; /* Centre verticalement */
+  justify-content: center;
+  align-items: center;
 }
 
-.header-container {
+header div#logo {
   display: flex;
-  align-items: center; /* Centre le logo et le texte verticalement */
+  justify-content: flex-start; /* Aligne l'image à gauche */
+  align-items: center; /* Centre l'image verticalement */
+  height: 100%; /* S'assure que la div prend toute la hauteur disponible */
 }
 
-/* Styles par défaut pour les écrans larges */
-.logo {
-  width: 200px; /* Taille par défaut pour les grands écrans */
-  margin-right: 1rem;
+header div#pp {
+  display: flex;
+  justify-content: flex-end; /* Aligne l'image à droite */
+  align-items: center; /* Centre l'image verticalement */
+  height: 100%; /* S'assure que la div prend toute la hauteur disponible */
 }
 
-.store {
-  width: 200px;
-  margin-right: 1rem;
+header div#pp img#pp {
+  border-radius: 50px; /* Rend l'image circulaire ou avec des coins arrondis */
 }
 
-/* Pour les tablettes (écrans moyens) */
-@media (max-width: 768px) {
-  .logo,
-  .store {
-    width: 150px; /* Réduit la largeur des éléments */
-  }
+header img {
+  max-width: 100px; /* Limite la largeur maximale des images */
+  max-height: 100px; /* Limite la hauteur maximale des images */
+  object-fit: contain; /* Garde les proportions des images */
 }
 
-/* Pour les téléphones (petits écrans) */
-@media (max-width: 480px) {
-  .logo,
-  .store {
-    width: 100px; /* Taille encore plus petite pour les écrans étroits */
-    margin-right: 0.5rem; /* Réduit l'espacement pour maximiser l'espace disponible */
-  }
-}
-
-/* Fin header */
-
-main {
-  padding: 2rem;
-  background-color: var(--vert-clair);
-}
-
-.features,
-.demo,
-.team {
-  margin-bottom: 2rem;
-}
-
-.features ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.features li {
-  background-color: var(--blanc);
-  margin: 0.5rem 0;
-  padding: 0.5rem;
-  border-left: 5px solid var(--marron);
-}
-
-div.maquette {
+container#semaine {
+  margin-top: 50px;
   display: flex;
   justify-content: center;
 }
 
-.carousel {
-  position: relative;
-  width: 80%; /* Ajuste la largeur du carousel */
+.calendar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
   max-width: 600px;
-  margin: auto;
+}
+
+.day {
+  position: relative;
+  text-align: center;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--gris);
+  margin: 0 auto;
+  position: relative;
+}
+
+.circle.filled {
+  background-color: var(--marron); /* Cercles pour les jours passés */
+}
+
+.circle.current::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: var(--blanc); /* Point blanc sous le jour actuel */
+  border-radius: 50%;
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+container#buttons {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Bouton 1 - Suivre une formation */
+  #button1 {
+    margin-right: 30px;
+    height: 50px;
+    background-color: var(--vert-clair);
+    color: var(--blanc);
+    padding: 15px 25px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  /* Bouton 2 - Créer une formation */
+  #button2 {
+    margin-left: 30px;
+    height: 50px;
+    background-color: var(--blanc);
+    color: var(--vert-clair);
+    padding: 15px 25px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  /* Effets au survol des deux boutons */
+  #button1:hover {
+    background-color: var(--blanc); /* Fond vert foncé au survol */
+    color: var(--vert-clair);
+  }
+
+  #button2:hover {
+    background-color: var(--vert-clair); /* Fond vert clair au survol */
+    color: var(--blanc); /* Texte blanc au survol */
+  }
+}
+
+/* Footer Styling */
+#progression-footer {
+  position: fixed; /* Fixe le footer en bas de l'écran */
+  bottom: 0;
+  left: 0;
+  width: 100%; /* S'étend sur toute la largeur */
+  background-color: var(--blanc);
+  padding: 20px;
+  color: var(--vert-clair);
+  text-align: center;
+  z-index: 10; /* Assure que le footer reste au-dessus d'autres éléments */
+}
+
+#progression-footer h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: var(--vert-clair);
+}
+
+.progress-section {
+  display: grid; /* Utilisation de la grille */
+  grid-template-columns: repeat(3, 1fr); /* Trois colonnes égales */
+  gap: 20px; /* Espacement entre les cellules */
+  justify-items: center; /* Centre les catégories horizontalement dans les colonnes */
+  padding: 10px; /* Ajout d'un padding pour éviter un bord serré */
+}
+
+.category {
+  width: 90%;
+  max-width: 400px; /* Ajuste la taille pour éviter trop de largeur */
+  text-align: left;
+}
+
+.category p {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  background-color: var(--gris);
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
   overflow: hidden;
 }
 
-.carousel-images {
+.progress-fill {
+  background-color: var(--jaune);
+  height: 100%;
+  border-radius: 10px;
+}
+
+/*Page profile*/
+
+container#profile {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 50%; /* La largeur totale est 3 fois celle du conteneur */
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
 }
 
-.carousel-images img {
+/* Conteneur principal */
+#profile-container {
+  color: var(--blanc);
+  max-width: 800px;
   width: 100%;
-  flex-shrink: 0; /* Chaque image occupe 100% de la largeur */
-}
-
-/* Début css Team */
-
-.team-section {
-  text-align: center;
+  background-color: var(--gris);
+  border-radius: 12px;
   padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.team-member {
-  display: inline-block;
-  margin: 20px;
+/* Profil utilisateur */
+#profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+  background-color: var(--gris);
+}
+
+#user-info h1 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.tasks {
+  font-size: 14px;
+  color: var(--marron);
+}
+
+/* Trophées */
+#trophies {
+  background-color: var(--vert-clair);
+  border-radius: 25px;
+  padding: 2px;
+}
+#trophies h2 {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.trophies-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+.trophy {
+  color: var(--noir);
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
   text-align: center;
 }
 
-.team-photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #ccc;
-}
-
-.team-name {
-  margin-top: 10px;
-  font-size: 18px;
+.trophy.highlighted {
+  background-color: var(--jaune);
   font-weight: bold;
 }
 
-.team-link {
-  display: block;
-  margin-top: 5px;
-  color: var(--marron); /* Couleur pour LinkedIn */
-  text-decoration: none;
+div #button_view-all {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#view-all {
+  background-color: var(--vert-clair);
+  color: var(--blanc);
+  border: 2px solid var(--blanc);
+
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+/* Paramètres */
+#settings h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#settings ul {
+  list-style: none;
+  padding: 0;
+}
+
+#settings li {
+  background-color: var(--gris);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Bouton Déconnexion */
+#logout {
+  background-color: var(--marron);
+  color: var(--blanc);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
   font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
 }
 
-.team-link:hover {
-  text-decoration: underline;
+/*Suivre une formation*/
+/* Conteneur principal pour les boutons */
+div#button {
+  display: grid; /* Utilise une grille */
+  grid-template-columns: repeat(4, 1fr); /* Crée 4 colonnes égales par ligne */
+  gap: 20px; /* Ajoute un espacement entre les boutons */
+  justify-items: center; /* Centre chaque bouton horizontalement */
+  align-items: center; /* Centre chaque bouton verticalement */
+  padding: 20px;
+  height: 50vh;
 }
 
-/* Fin css Team */
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: var(--jaune);
+h2 {
+  color: var(--blanc);
+  text-transform: uppercase;
+  text-align: center; /* Centrer le titre */
+  margin: 30px;
 }
 
-footer p {
-  margin: 0.5rem 0;
+button.button_formation1 {
+  height: 50px;
+  width: 300px;
+  background-color: var(--vert-clair);
+  color: var(--blanc);
+  padding: 15px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 100px;
+}
+
+button.button_formation2 {
+  height: 50px;
+  width: 300px;
+  background-color: var(--blanc);
+  color: var(--vert-clair);
+  padding: 15px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 100px;
+}
+
+/*Creer une formation*/
+
+div#form {
+  display: flex;
+  justify-content: center;
+}
+/* Conteneur du formulaire */
+form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 1000px;
+  padding: 20px;
+}
+
+/* Labels */
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--blanc);
+}
+
+/* Champs de texte */
+form input[type="text"],
+form textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--gris); /* Fond gris clair */
+  color: var(--blanc);
+  margin-bottom: 50px;
+}
+
+/* Champ d'upload */
+form input[type="file"] {
+  display: block;
+  margin: 10px auto 20px auto;
+}
+
+/* Bouton Publier */
+form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--vert-clair);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Effet au survol */
+form button:hover {
+  background-color: var(--blanc);
+  color: var(--vert-clair);
+}
+
+/*Cuisine*/
+#videos {
+  padding: 20px; /* Ajoute de l'espace autour des vidéos */
+  border-radius: 10px; /* Ajoute des coins arrondis pour un style moderne */
+  display: flex;
+  flex-direction: row; /* Place les vidéos en colonne */
+  gap: 20px; /* Espacement vertical entre les vidéos */
+  align-items: center; /* Centre les vidéos horizontalement */
+  width: fit-content; /* S'ajuste à la largeur des vidéos */
+  margin: 0 auto; /* Centre le conteneur sur la page */
+  color: var(--blanc);
+}
+.video-container {
+  background-color: var(--gris); /* Fond gris */
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column; /* Arrange l'iframe au-dessus des infos */
+  gap: 10px; /* Espacement entre l'iframe et les infos */
+}
+
+.video-info {
+  display: flex;
+  align-items: center; /* Aligne verticalement les éléments sur la même ligne */
+  gap: 15px; /* Espacement horizontal entre les éléments */
+  justify-content: space-between;
+}
+
+.video-info p {
+  margin: 0; /* Supprime les marges par défaut */
+  font-size: 14px; /* Taille du texte */
+}
+
+.rating {
+  color: #ffd700; /* Couleur des étoiles (or) */
+  font-size: 16px; /* Taille des étoiles */
 }

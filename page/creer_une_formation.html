@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ED Moi</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <header>
-      <div id="logo"><img src="/img/logo.png" alt="logo" /></div>
+      <a href="/index.html">
+        <div id="logo"><img src="/img/logo.png" alt="logo" /></div
+      ></a>
       <div id="titre">
         <h1>ED Moi</h1>
       </div>
@@ -18,46 +20,33 @@
         /></a>
       </div>
     </header>
-    <container id="semaine">
-      <div class="calendar">
-        <div class="day" data-day="1">
-          <div class="circle"></div>
-          <p>L</p>
-        </div>
-        <div class="day" data-day="2">
-          <div class="circle"></div>
-          <p>M</p>
-        </div>
-        <div class="day" data-day="3">
-          <div class="circle"></div>
-          <p>M</p>
-        </div>
-        <div class="day" data-day="4">
-          <div class="circle"></div>
-          <p>J</p>
-        </div>
-        <div class="day" data-day="5">
-          <div class="circle"></div>
-          <p>V</p>
-        </div>
-        <div class="day" data-day="6">
-          <div class="circle"></div>
-          <p>S</p>
-        </div>
-        <div class="day" data-day="7">
-          <div class="circle"></div>
-          <p>D</p>
-        </div>
+
+    <div id="creer_une_formation">
+      <h2>CRÉER UNE FORMATION</h2>
+      <div id="form">
+        <form>
+          <label for="nom">Nom de la formation</label>
+          <input
+            type="text"
+            id="nom"
+            name="nom"
+            placeholder="Entrez le nom de la formation"
+          />
+
+          <label for="explication">Explication</label>
+          <textarea
+            id="explication"
+            name="explication"
+            placeholder="Expliquez votre formation"
+          ></textarea>
+
+          <label for="upload">Upload une vidéo</label>
+          <input type="file" id="upload" name="upload" />
+
+          <button type="submit">Publier</button>
+        </form>
       </div>
-    </container>
-    <container id="buttons">
-      <a href="/page/suivre_une_formation.html">
-        <button id="button1">Suivre une formation</button></a
-      >
-      <a href="/page/creer_une_formation.html">
-        <button id="button2">Créer une formation</button></a
-      >
-    </container>
+    </div>
     <footer id="progression-footer">
       <h2>Votre progression</h2>
       <div class="progress-section">
@@ -93,7 +82,5 @@
         </div>
       </div>
     </footer>
-
-    <script src="script.js"></script>
   </body>
 </html>
