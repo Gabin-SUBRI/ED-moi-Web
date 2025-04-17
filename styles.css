@@ -324,6 +324,20 @@ div #button_view-all {
 
 /*Suivre une formation*/
 /* Conteneur principal pour les boutons */
+img#fleche-gauche {
+  width: 60px;
+  height: auto;
+  position: fixed;
+  left: 10px;
+  margin-top: 10px;
+}
+
+div#en-tete {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 div#button {
   display: grid; /* Utilise une grille */
   grid-template-columns: repeat(4, 1fr); /* Crée 4 colonnes égales par ligne */
@@ -409,6 +423,17 @@ form textarea {
 form input[type="file"] {
   display: block;
   margin: 10px auto 20px auto;
+}
+
+input#upload {
+  display: block;
+  padding: 10px;
+  background-color: var(--blanc);
+  color: var(--vert-clair);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 /* Bouton Publier */
