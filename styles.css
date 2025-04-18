@@ -15,32 +15,30 @@ body {
 }
 
 header {
-  display: grid;
+  display: flex;
   background-color: var(--gris);
-  grid-template-columns: 1fr 2fr 1fr; /* Colonnes avec des largeurs : 25%, 50%, 25% */
-  padding: 1rem;
+  justify-content: space-between; /* Répartit les trois parties avec un espace entre elles */
+  align-items: center; /* Centre verticalement les éléments */
+}
+
+header div#logo {
+  flex: 1; /* Permet à cette section de s'étirer proportionnellement */
 }
 
 header div#titre {
-  color: var(--blanc);
-  display: flex;
+  flex: 2; /* Permet à cette section d'occuper plus d'espace que les autres */
+  display: flex; /* Ajoute du flex pour centrer le contenu */
   justify-content: center;
   align-items: center;
 }
 
-header div#logo {
+header div#pp {
+  flex: 1; /* Garde la même largeur que le logo */
   display: flex;
-  justify-content: flex-start; /* Aligne l'image à gauche */
-  align-items: center; /* Centre l'image verticalement */
-  height: 100%; /* S'assure que la div prend toute la hauteur disponible */
+  justify-content: flex-end;
+  align-items: center;
 }
 
-header div#pp {
-  display: flex;
-  justify-content: flex-end; /* Aligne l'image à droite */
-  align-items: center; /* Centre l'image verticalement */
-  height: 100%; /* S'assure que la div prend toute la hauteur disponible */
-}
 
 header div#pp img#pp {
   border-radius: 50px; /* Rend l'image circulaire ou avec des coins arrondis */
@@ -145,6 +143,20 @@ container#buttons {
 }
 
 /* Footer Styling */
+img#fleche-formation{
+  width: 60px;
+  height: auto;
+  position: fixed;
+  rotate: -90deg;
+  right: 10px;
+}
+
+div#titre-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 #progression-footer {
   position: fixed; /* Fixe le footer en bas de l'écran */
   bottom: 0;
@@ -230,6 +242,10 @@ container#profile {
   border-radius: 50%;
   margin-right: 20px;
   background-color: var(--gris);
+}
+
+h1 {
+  color: var(--blanc);
 }
 
 #user-info h1 {
@@ -324,14 +340,6 @@ div #button_view-all {
 
 /*Suivre une formation*/
 /* Conteneur principal pour les boutons */
-img#fleche-gauche {
-  width: 60px;
-  height: auto;
-  position: fixed;
-  left: 10px;
-  margin-top: 10px;
-}
-
 div#en-tete {
   display: flex;
   flex-direction: row;
@@ -455,18 +463,42 @@ form button:hover {
   color: var(--vert-clair);
 }
 
-/*Cuisine*/
+/* Cuisine */
+
+div#titre-cusine {
+  display: flex;
+  align-items: center; /* Aligne verticalement */
+  justify-content: center; /* Centre horizontalement */
+  position: relative; /* Permet un positionnement relatif pour la flèche */
+}
+
+img#fleche-gauche {
+  width: 60px;
+  height: auto;
+  position: absolute; /* Permet de positionner la flèche */
+  left: 0; /* Position à gauche */
+}
+
+h2 {
+  margin: 0; /* Supprime les marges par défaut pour un alignement propre */
+  text-align: center;
+}
+
+
+
 #videos {
   padding: 20px; /* Ajoute de l'espace autour des vidéos */
   border-radius: 10px; /* Ajoute des coins arrondis pour un style moderne */
-  display: flex;
-  flex-direction: row; /* Place les vidéos en colonne */
-  gap: 20px; /* Espacement vertical entre les vidéos */
-  align-items: center; /* Centre les vidéos horizontalement */
+  display: grid; /* Utilise une grille pour organiser les vidéos */
+  grid-template-columns: repeat(2, 1fr); /* 2 vidéos par ligne */
+  gap: 20px; /* Espacement entre les vidéos */
+  align-items: center; /* Centre les vidéos verticalement */
+  justify-content: center; /* Centre les vidéos horizontalement */
   width: fit-content; /* S'ajuste à la largeur des vidéos */
   margin: 0 auto; /* Centre le conteneur sur la page */
   color: var(--blanc);
 }
+
 .video-container {
   background-color: var(--gris); /* Fond gris */
   padding: 15px;
@@ -491,4 +523,57 @@ form button:hover {
 .rating {
   color: #ffd700; /* Couleur des étoiles (or) */
   font-size: 16px; /* Taille des étoiles */
+}
+
+/*Media Querry*/
+
+/* Ajout de media queries pour rendre le CSS responsive */
+
+@media (max-width: 1024px) {
+  header {
+    grid-template-columns: 1fr; /* Une seule colonne pour les petits écrans */
+    text-align: center;
+  }
+
+  header div#logo, header div#pp {
+    justify-content: center; /* Centrer les éléments dans les petits écrans */
+  }
+
+  container#buttons {
+    flex-direction: column; /* Empile les boutons verticalement */
+  }
+
+  #button1, #button2 {
+    width: 90%; /* Réduit la taille des boutons sur des écrans plus petits */
+    margin: 10px 0; /* Ajoute de l'espace vertical entre les boutons */
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar {
+    flex-direction: column; /* Empile les éléments de calendrier verticalement */
+  }
+
+  .day .circle {
+    width: 40px;
+    height: 40px; /* Réduit la taille des cercles */
+  }
+}
+
+@media (max-width: 480px) {
+  #profile-container {
+    padding: 10px; /* Réduit les marges pour les écrans très petits */
+  }
+
+  .trophies-container {
+    flex-direction: column; /* Empile les trophées verticalement */
+  }
+
+  #settings ul {
+    padding: 0;
+  }
+
+  #settings li {
+    font-size: 12px; /* Réduit la taille de la police */
+  }
 }
